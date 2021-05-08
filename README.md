@@ -1,4 +1,4 @@
-<b>Problem Statement:</b>
+<b>Problem Statement:</b><br />
 An array consists of 1000 elements each initialized from 0 to 999 respectively. Using threads defined by user input increment the value of each element in the array by 5 and  report the execution time for different number of cores and different number of threads for each core.
 
 <b>Created and Developed by:</b>
