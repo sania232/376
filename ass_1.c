@@ -25,7 +25,7 @@ void* IncrementArray(void* params)
 
     for (int i = a_inf->start; i < a_inf->end; i++)
     {
-        a_inf->arrayElements[i] = a_inf->arrayElements[i] + inc_val;
+        a_inf->arrayElements[i] += inc_val;
     }
 
     printf("Thread %d: worked on [%d] to [%d]\n", a_inf->threadNumber, a_inf->start, a_inf->end);
@@ -38,7 +38,7 @@ void* IncrementArray(void* params)
 */
 void PrintArray(int* arrayName, int* arraySize)
 {
-    int formattingCount = 1;
+    int totalNumsInLine = 1;
     printf("{\n");
     for (int i = 0; i < *arraySize; i++)
     {
@@ -47,16 +47,16 @@ void PrintArray(int* arrayName, int* arraySize)
             printf("%04d\n}\n", *arrayName + i);
             break;
         }
-        if (formattingCount == 25)
+        if (totalNumsInLine == 25)
         {
             printf("%04d,\n", *arrayName + i);
-            formattingCount = 0;
+            totalNumsInLine = 0;
         }
         else
         {
             printf("%04d, ", *arrayName + i);
         }
-        formattingCount++;
+        totalNumsInLine++;
     }
 }
 
@@ -69,7 +69,7 @@ int main()
     scanf("%d", &threads_number);
     pthread_t* myThreadArray = malloc(sizeof(pthread_t) * threads_number); //creates dynamic array
 
-    int array_size = 1000000;
+    int array_size = 1000000; // 1 million
 
     int number_array[array_size];
     for (int i = 0; i < array_size; i++)
