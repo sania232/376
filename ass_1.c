@@ -18,8 +18,6 @@ void PrintArray(int* arrayName, int* arraySize);
 
 int main()
 {
-    struct timespec start, end;
-
     int threads_number;
     printf("Please enter the number of threads you would like to use\n");
     scanf("%d", &threads_number);
@@ -45,6 +43,7 @@ int main()
         array_of_structs[i].end = ((i + 1) * array_size) / threads_number;
     }
 
+    struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     for (int i = 0; i < threads_number; i++)
