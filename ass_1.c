@@ -13,6 +13,11 @@ struct IncrementArrayParameters
     int threadNumber;
 };
 
+/* Function: Increment Array
+*  Usage: &IntegerArray((void*)&parameter);
+*  -------------------------------------------------
+*  Function to increment array
+*/
 void* IncrementArray(void* params)
 {
     struct IncrementArrayParameters* a_inf = (struct IncrementArrayParameters*)params;
@@ -26,6 +31,11 @@ void* IncrementArray(void* params)
     printf("Thread %d: worked on [%d] to [%d]\n", a_inf->threadNumber, a_inf->start, a_inf->end);
 }
 
+/* Function: Print Array
+*  Usage: PrintArray(integerArrayName, &arraySize);
+*  -------------------------------------------------
+*  Function to print integer array
+*/
 void PrintArray(int* arrayName, int* arraySize)
 {
     int formattingCount = 1;
@@ -59,7 +69,7 @@ int main()
     scanf("%d", &threads_number);
     pthread_t* myThreadArray = malloc(sizeof(pthread_t) * threads_number); //creates dynamic array
 
-    int array_size = 1000;
+    int array_size = 1000000;
 
     int number_array[array_size];
     for (int i = 0; i < array_size; i++)
