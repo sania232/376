@@ -3,7 +3,7 @@ An array consists of 1000 elements each initialized from 0 to 999 respectively. 
 
 <b>Created and Developed by:</b>
 - Keshav Mathur (5773878)
-- Sania Shehzad (Student ID)
+- Sania Shehzad (5981384)
 
 <b>References:</b>
 1. To get the number of cores: https://stackoverflow.com/questions/4586405/how-to-get-the-number-of-cpus-in-linux-using-c (Author: Владимир Николайчук)
