@@ -14,7 +14,7 @@ struct IncrementArrayParameters
 };
 
 /* Function: Increment Array
-*  Usage: &IntegerArray((void*)&parameter);
+*  Usage: IncrementArray((void*)&parameter);
 *  -------------------------------------------------
 *  Function to increment array
 */
