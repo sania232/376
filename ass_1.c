@@ -13,52 +13,8 @@ struct IncrementArrayParameters
     int threadNumber;
 };
 
-/* Function: Increment Array
-*  Usage: IncrementArray((void*)&parameter);
-*  -------------------------------------------------
-*  Function to increment array
-*/
-void* IncrementArray(void* params)
-{
-    struct IncrementArrayParameters* a_inf = (struct IncrementArrayParameters*)params;
-    int inc_val = 5;
-
-    for (int i = a_inf->start; i < a_inf->end; i++)
-    {
-        a_inf->arrayElements[i] += inc_val;
-    }
-
-    printf("Thread %d: worked on [%d] to [%d]\n", a_inf->threadNumber, a_inf->start, a_inf->end);
-}
-
-/* Function: Print Array
-*  Usage: PrintArray(integerArrayName, &arraySize);
-*  -------------------------------------------------
-*  Function to print integer array
-*/
-void PrintArray(int* arrayName, int* arraySize)
-{
-    int totalNumsInLine = 1;
-    printf("{\n");
-    for (int i = 0; i < *arraySize; i++)
-    {
-        if (i == (*arraySize - 1))
-        {
-            printf("%04d\n}\n", *arrayName + i);
-            break;
-        }
-        if (totalNumsInLine == 25)
-        {
-            printf("%04d,\n", *arrayName + i);
-            totalNumsInLine = 0;
-        }
-        else
-        {
-            printf("%04d, ", *arrayName + i);
-        }
-        totalNumsInLine++;
-    }
-}
+void* IncrementArray(void* params);
+void PrintArray(int* arrayName, int* arraySize);
 
 int main()
 {
@@ -73,9 +29,8 @@ int main()
 
     int number_array[array_size];
     for (int i = 0; i < array_size; i++)
-    {
         number_array[i] = i;
-    }
+
     printf("Old Array:\n");
     PrintArray(number_array, &array_size);
     printf("\n\n");
@@ -116,4 +71,49 @@ int main()
     printf("Execution time = %f seconds\nNumber of threads: %d\nNumber of cores: %02d\n", elapsed / 1000000000.0, threads_number, get_nprocs());
 
     return 0;
+}
+
+/* Function: Increment Array
+*  Usage: IncrementArray((void*)&parameter);
+*  -------------------------------------------------
+*  Function to increment array
+*/
+void* IncrementArray(void* params)
+{
+    struct IncrementArrayParameters* a_inf = (struct IncrementArrayParameters*)params;
+    int inc_val = 5;
+
+    for (int i = a_inf->start; i < a_inf->end; i++)
+        a_inf->arrayElements[i] += inc_val;
+
+    printf("Thread %d: worked on [%d] to [%d]\n", a_inf->threadNumber, a_inf->start, a_inf->end);
+}
+
+/* Function: Print Array
+*  Usage: PrintArray(integerArrayName, &arraySize);
+*  -------------------------------------------------
+*  Function to print integer array
+*/
+void PrintArray(int* arrayName, int* arraySize)
+{
+    int totalNumsInLine = 1;
+    printf("{\n");
+    for (int i = 0; i < *arraySize; i++)
+    {
+        if (i == (*arraySize - 1))
+        {
+            printf("%04d\n}\n", *arrayName + i);
+            break;
+        }
+        if (totalNumsInLine == 25)
+        {
+            printf("%04d,\n", *arrayName + i);
+            totalNumsInLine = 0;
+        }
+        else
+        {
+            printf("%04d, ", *arrayName + i);
+        }
+        totalNumsInLine++;
+    }
 }
