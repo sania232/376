@@ -1,5 +1,5 @@
 <b>Problem Statement:</b><br />
-An array consists of 100,000 elements each initialized from 0 to 999 respectively. Using threads defined by user input increment the value of each element in the array by 5 and  report the execution time for different number of cores and different number of threads for each core.
+An array consists of 1,000,000 elements each initialized from 0 to 999,999 respectively. Using threads defined by user input increment the value of each element in the array by 5 and  report the execution time for different number of cores and different number of threads for each core.
 
 <b>Program Execution Instructions un Ubuntu 20.04</b>
 - Validate if gcc is installed using terminal command: ```gcc --version```
