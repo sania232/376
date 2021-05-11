@@ -24,3 +24,6 @@ An array consists of 1,000,000 elements each initialized from 0 to 999,999 respe
 
 <b>References:</b>
 1. To get the number of cores: https://stackoverflow.com/questions/4586405/how-to-get-the-number-of-cpus-in-linux-using-c (Author: Владимир Николайчук)
+2. To clear screen: https://www.includehelp.com/c-programming-questions/how-to-clear-output-screen-in-c.aspx
+3. To check if file is empty: https://stackoverflow.com/questions/13566082/how-to-check-if-a-file-has-content-or-not-using-c
+4. To use a micro symbol: https://askubuntu.com/questions/1098090/how-do-i-type-a-%C2%B5-micro-symbol
