@@ -1,5 +1,5 @@
 <b>Problem Statement:</b><br />
-An array consists of 100,000 elements each initialized from 0 to 999 respectively. Using threads defined by user input increment the value of each element in the array by 5 and  report the execution time for different number of cores and different number of threads for each core.
+An array consists of 1,000,000 elements each initialized from 0 to 999,999 respectively. Using threads defined by user input increment the value of each element in the array by 5 and report and graph the execution time for different number of cores and different number of threads for each core.
 
 <b>Program Execution Instructions un Ubuntu 20.04</b>
 - Validate if gcc is installed using terminal command: ```gcc --version```
@@ -24,3 +24,6 @@ An array consists of 100,000 elements each initialized from 0 to 999 respectivel
 
 <b>References:</b>
 1. To get the number of cores: https://stackoverflow.com/questions/4586405/how-to-get-the-number-of-cpus-in-linux-using-c (Author: Владимир Николайчук)
+2. To clear screen: https://www.includehelp.com/c-programming-questions/how-to-clear-output-screen-in-c.aspx
+3. To check if file is empty: https://stackoverflow.com/questions/13566082/how-to-check-if-a-file-has-content-or-not-using-c
+4. To use a micro symbol: https://askubuntu.com/questions/1098090/how-do-i-type-a-%C2%B5-micro-symbol
