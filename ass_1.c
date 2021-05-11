@@ -1,14 +1,15 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
 #include <sys/time.h>
 #include <sys/sysinfo.h>
 
-#define FILENAME "ThreadExecutionReport.csv"
+string FILENAME "ThreadExecutionReport.csv"
 
 long long AVG_TOTAL = 0;
 int EXECUTION_COUNT = 6; // to get the average execution time for each number of thread
+FILE* filePointer;
 
 struct IncrementArrayParameters
 {
@@ -24,7 +25,9 @@ void PrintArray(int* arrayName, int* arraySize);
 void RecordOutputToFile(int threadNumber, int executionNumber, long long elapsed);
 
 int main()
-{
+{	
+	
+    filePointer = fopen(FILENAME, "w+");
     int threads_number, start_thread_number = 1, end_thread_number = 6;
     printf("Please enter the number of threads you would like to start from\n");
     scanf("%d", &start_thread_number);
@@ -46,6 +49,7 @@ int main()
         threads_number++;
     }
 
+	 fclose(filePointer);
 
     return 0;
 }
@@ -67,7 +71,7 @@ void ExecuteThreads(int threads_number, int execution_number)
 
     /* TEST: To check whether array is filled with elements*/
     // printf("Old Array:\n");
-    // PrintArray(number_array, &array_size);
+    // (number_array, &array_size);
     // printf("\n\n");
 
     struct IncrementArrayParameters array_of_structs[threads_number]; //will make 1 struct for each thread
@@ -163,8 +167,7 @@ void PrintArray(int* arrayName, int* arraySize)
 */
 void RecordOutputToFile(int number_of_threads, int executionNumber, long long elapsed)
 {
-    FILE* filePointer;
-    filePointer = fopen(FILENAME, "a+");
+   
     if (filePointer == NULL)
     {
         printf("Error!");
@@ -180,15 +183,16 @@ void RecordOutputToFile(int number_of_threads, int executionNumber, long long el
     fprintf(filePointer, "%d,%d,%d,%04lld,%f", get_nprocs(), number_of_threads, executionNumber, (elapsed / 1000), ((double)elapsed / 1000000000.0));
 
     if (executionNumber == EXECUTION_COUNT)
-    {
+    {	
+    	 AVG_TOTAL += (elapsed / 1000);
         fprintf(filePointer, ",%04lld\n", (AVG_TOTAL / EXECUTION_COUNT));
-        fclose(filePointer);
+        //fclose(filePointer);
         AVG_TOTAL = 0;
     }
     else
     {
         fprintf(filePointer, ",\n");
         AVG_TOTAL += (elapsed / 1000);
-        fclose(filePointer);
+       
     }
 }
